@@ -1,0 +1,31 @@
+{
+  "name": "enworld-twitterbot",
+  "version": "1.0.2",
+  "description": "Twitter bot to tweet out articles from ENWorld.org",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/wesbaker/enworld-twitterbot"
+  },
+  "keywords": [
+    "enworld",
+    "twitter",
+    "rss",
+    "rpg"
+  ],
+  "author": "Wes Baker <wes@wesbaker.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@sentry/node": "^5.5.0",
+    "date-fns": "^1.30.1",
+    "mongoose": "^5.0.11",
+    "rss-parser": "^3.7.2",
+    "twitter": "^1.7.1"
+  },
+  "engines": {
+    "node": "~10.16.0"
+  }
+}
