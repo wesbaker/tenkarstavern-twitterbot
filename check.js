@@ -1,8 +1,6 @@
 "use strict";
 
-const format = require("date-fns/format");
-const parse = require("date-fns/parse");
-const compareAsc = require("date-fns/compare_asc");
+const compareAsc = require("date-fns/compareAsc");
 const mongoose = require("mongoose");
 const Parser = require("rss-parser");
 const Sentry = require("@sentry/node");
@@ -41,7 +39,7 @@ module.exports = async (req, res) => {
 
     const count = await Post.count({ url });
     if (count == 0) {
-      const published_at = format(pubDate, "YYYY-MM-DD HH:mm:ss.SSS");
+      const published_at = new Date(pubDate);
       const newPost = new Post({ title, published_at, url });
       await newPost.save();
 
@@ -53,7 +51,7 @@ module.exports = async (req, res) => {
 
   // Delete all posts older than what's in the feed
   const oldestDate = feed.items
-    .map(item => parse(item.pubDate))
+    .map(({ pubDate }) => new Date(pubDate))
     .sort(compareAsc)[0];
   promises.push(Post.deleteMany({ published_at: { $lt: oldestDate } }));
   // Clean up any records without URLs
