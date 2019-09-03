@@ -9,6 +9,7 @@
   "env": {
     "NODE_ENV": "production",
     "DATABASE": "@tenkarstavern_database",
+    "SENTRY_DSN": "@tenkarstavern_sentry_dsn",
     "TWITTER_CONSUMER_KEY": "@tenkarstavern_twitter_consumer_key",
     "TWITTER_CONSUMER_SECRET": "@tenkarstavern_twitter_consumer_secret",
     "TWITTER_ACCESS_TOKEN_KEY": "@tenkarstavern_twitter_access_token_key",
