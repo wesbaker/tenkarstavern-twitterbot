@@ -4,15 +4,23 @@ const compareAsc = require("date-fns/compareAsc");
 const mongoose = require("mongoose");
 const Parser = require("rss-parser");
 const Sentry = require("@sentry/node");
-const tweet = require("./lib/tweet");
+const tweet = require("../lib/tweet");
 
 Sentry.init({
   environment: process.env.NODE_ENV,
-  dsn: process.env.SENTRY_DSN
+  dsn: process.env.SENTRY_DSN,
 });
-require("./models/Post");
+require("../models/Post");
 const parser = new Parser();
-mongoose.connect(process.env.DATABASE).catch(logError);
+mongoose
+  .connect(process.env.DATABASE_URI, {
+    dbName: process.env.DATABASE,
+    auth: {
+      user: process.env.DATABASE_USER,
+      password: process.env.DATABASE_PASSWORD,
+    },
+  })
+  .catch(logError);
 
 function logError(error) {
   if (process.env.NODE_ENV !== "development") {
@@ -33,7 +41,7 @@ module.exports = async (req, res) => {
 
   const Post = mongoose.model("Post");
 
-  const promises = feed.items.map(async item => {
+  const promises = feed.items.map(async (item) => {
     const { title, pubDate, link } = item;
     const url = link.replace(/-.*?$/, ""); // only match post ID
 
@@ -57,7 +65,7 @@ module.exports = async (req, res) => {
   // Clean up any records without URLs
   promises.push(Post.deleteMany({ url: null }));
 
-  await Promise.all(promises);
+  await Promise.all(promises).catch(logError);
 
   res.status(200).end("Finished sending tweets.");
 };
