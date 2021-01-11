@@ -22,7 +22,7 @@
     "@sentry/node": "^5.29.2",
     "date-fns": "^2.0.0",
     "mongoose": "^5.11.11",
-    "rss-parser": "^3.7.2",
+    "rss-parser": "^3.10.0",
     "twitter": "^1.7.1"
   },
   "engines": {
