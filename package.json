@@ -21,7 +21,7 @@
   "dependencies": {
     "@sentry/node": "^5.5.0",
     "date-fns": "^2.0.0",
-    "mongoose": "^5.7.5",
+    "mongoose": "^5.11.11",
     "rss-parser": "^3.7.2",
     "twitter": "^1.7.1"
   },
