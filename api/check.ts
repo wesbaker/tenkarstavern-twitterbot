@@ -1,7 +1,7 @@
 import compareAsc from "date-fns/compareAsc";
 import mongoose from "mongoose";
 import Parser from "rss-parser";
-import Sentry from "@sentry/node";
+import * as Sentry from "@sentry/node";
 import tweet from "../lib/tweet";
 import "../models/Post";
 import { ResponseData } from "twitter";
