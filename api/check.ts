@@ -15,11 +15,6 @@ Sentry.init({
 const parser = new Parser();
 mongoose
   .connect(process.env.DATABASE_URI || "", {
-    dbName: process.env.DATABASE || "",
-    auth: {
-      user: process.env.DATABASE_USER || "",
-      password: process.env.DATABASE_PASSWORD || "",
-    },
     useUnifiedTopology: true,
     useNewUrlParser: true,
   })
