@@ -26,7 +26,7 @@
     "twitter": "^1.7.1"
   },
   "engines": {
-    "node": "10.x"
+    "node": "12.x"
   },
   "devDependencies": {
     "eslint": "^7.17.0"
