@@ -27,7 +27,7 @@ function logError(error: Error): void {
 
 export default async (req: NowRequest, res: NowResponse): Promise<void> => {
   const feed = await parser
-    .parseURL("https://www.enworld.org/ewr-porta/index.rss")
+    .parseURL("http://www.tenkarstavern.com/feeds/posts/default?max-results=10")
     .catch(logError);
 
   if (!feed) {
