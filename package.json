@@ -19,7 +19,7 @@
   "author": "Wes Baker <wes@wesbaker.com>",
   "license": "MIT",
   "dependencies": {
-    "@sentry/node": "^6.12.0",
+    "@sentry/node": "^6.19.5",
     "date-fns": "^2.23.0",
     "mongoose": "^5.12.15",
     "rss-parser": "^3.12.0",
